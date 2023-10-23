@@ -24,7 +24,6 @@ class Widget(QWidget):
         # ui_file = QFile("form.ui")
         # ui_file.open(QFile.ReadOnly)
         # self.ui = loader.load(ui_file)
-        # Michail
         # ui_file.close()
 
     def getMaterialVP(self):
