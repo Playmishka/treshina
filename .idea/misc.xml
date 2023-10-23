@@ -4,7 +4,11 @@
     <option name="sdkName" value="Python 3.12 (shara)" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (treshina)" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (treshina)" project-jdk-type="Python SDK" />
+>>>>>>> abc973d3d6469f2fddab3ba646d7c9c702d1a84f
 =======
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (treshina)" project-jdk-type="Python SDK" />
 >>>>>>> abc973d3d6469f2fddab3ba646d7c9c702d1a84f

@@ -5,7 +5,11 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="jdk" jdkName="Python 3.11 (treshina)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 3.12 (treshina)" jdkType="Python SDK" />
+>>>>>>> abc973d3d6469f2fddab3ba646d7c9c702d1a84f
 =======
     <orderEntry type="jdk" jdkName="Python 3.12 (treshina)" jdkType="Python SDK" />
 >>>>>>> abc973d3d6469f2fddab3ba646d7c9c702d1a84f
