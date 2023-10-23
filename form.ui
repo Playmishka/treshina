@@ -51,26 +51,26 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    <property name="title">
     <string>Обработать</string>
    </property>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QRadioButton" name="radioButton">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>78</width>
-      <height>22</height>
+      <width>89</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Фото</string>
+     <string>Фото </string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QRadioButton" name="radioButton_2">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>78</width>
-      <height>22</height>
+      <width>89</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -180,7 +180,8 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 9pt &quot;PT Bold Heading&quot;;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="DownloadVideoButton">
@@ -205,7 +206,7 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>551</width>
+     <width>481</width>
      <height>16</height>
     </rect>
    </property>
@@ -213,7 +214,7 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
     <string notr="true">font: 600 12pt &quot;Bahnschrift SemiBold SemiConden&quot;;</string>
    </property>
    <property name="text">
-    <string>Аппаратно-программный комплекс определения деформаций зданий и сооружений </string>
+    <string>Программный комплекс определения деформаций зданий и сооружений </string>
    </property>
   </widget>
  </widget>
