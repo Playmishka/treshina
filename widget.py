@@ -13,6 +13,8 @@ from ui_form import Ui_Widget
 
 
 class Widget(QWidget):
+    listPath: list = []
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Widget()
@@ -30,10 +32,10 @@ class Widget(QWidget):
         directory = QtWidgets.QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
                                                                         "*.mp4 *.png) ;; MP4 (*.mp4);; PNG (*.png);; "
                                                                         "JPEG (*.jpeg);; JPG (*.jpg)")
-        print(directory)
 
         for obj in directory[0]:
             self.ui.listWidget.addItem(os.path.basename(obj))
+            self.listPath.append(directory[0])
 
     def deleteSelectedItem(self):
         selectitem = self.ui.listWidget.currentItem()
