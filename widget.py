@@ -5,6 +5,8 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
 
+from roboflow import Roboflow
+
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
@@ -23,6 +25,8 @@ class Widget(QWidget):
         self.ui.DownloadVideoButton.clicked.connect(self.getMaterialVP)
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
+        self.ui.ProcessingButton.clicked.connect(self.robo)
+        
         # loader = QUiLoader()
         # ui_file = QFile("form.ui")
         # ui_file.open(QFile.ReadOnly)
@@ -53,6 +57,13 @@ class Widget(QWidget):
         msg.setDetailedText("Здесь будет отображаться подсказка для пользователя.")
         msg.setWindowTitle("Помощь")
         msg.exec_()
+
+    def robo(self):
+        rf = Roboflow(api_key="7WkAQlCwtd7XXisox596")
+        project = rf.workspace().project("trechina")
+        model = project.version(1).model
+
+        model.predict(self.listPath[0][0], confidence=40, overlap=30).save("Prediction.jpg")
 
 
 # Точка выполнения программы.
