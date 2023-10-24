@@ -5,6 +5,9 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
 
+from PySide6.QtGui import QPixmap  # класс, предоставляемый Qt и PySide6 для работы с изображениями
+from PySide6.QtCore import Qt
+
 from roboflow import Roboflow
 
 # Important:
@@ -30,7 +33,7 @@ class Widget(QWidget):
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
         self.ui.ProcessingButton.clicked.connect(self.robo)
-        self.ui.listWidget.itemClicked.connect(self.ViewImage)
+        self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
         
         # loader = QUiLoader()
         # ui_file = QFile("form.ui")
@@ -66,14 +69,25 @@ class Widget(QWidget):
         msg.setWindowTitle("Помощь")
         msg.exec_()
 
+    #Отображение изображений
+    def ViewImage(self, item):
+        selected_item = self.ui.listWidget.currentItem()
+        if selected_item:
+            pixmap = QPixmap(selected_item.text())  # Загружаем изображение из пути, хранящегося в тексте элемента
+            self.ui.label_2.setFixedSize(300, 300)
+            label_2_width = self.ui.label_2.width()  # Получаем ширину label_2
+            label_2_height = self.ui.label_2.height()  # Получаем высоту label_2
+            pixmap = pixmap.scaled(label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)  # Масштабируем изображение
+            self.ui.label_2.setPixmap(pixmap)  # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
+
     def robo(self):
         self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
                            stroke=2).save("Prediction.jpg")
         
-    def ViewImage(self, item):
-        selectedItems = self.ui.listWidget.selectedItems()
-        for item in selectedItems:
-            self.ui.label_2.setPixmap(item.text())
+    #def ViewImage(self, item):
+    #    selectedItems = self.ui.listWidget.selectedItems()
+    #    for item in selectedItems:
+    #        self.ui.label_2.setPixmap(item.text())
 
 # Точка выполнения программы.
 if __name__ == "__main__":
