@@ -30,7 +30,7 @@ class Widget(QWidget):
 
     def getMaterialVP(self):
         directory = QtWidgets.QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
-                                                                        "*.mp4 *.png) ;; MP4 (*.mp4);; PNG (*.png);; "
+                                                                        "*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);; PNG (*.png);; "
                                                                         "JPEG (*.jpeg);; JPG (*.jpg)")
 
         for obj in directory[0]:
