@@ -15,6 +15,7 @@ from ui_form import Ui_Widget
 class Widget(QWidget):
     listPath: list = []
 
+    # Конструктор класса окна приложения.
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Widget()
@@ -28,6 +29,7 @@ class Widget(QWidget):
         # self.ui = loader.load(ui_file)
         # ui_file.close()
 
+    # Получение материалов для обработки.
     def getMaterialVP(self):
         directory = QtWidgets.QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
                                                                         "*.mp4 *.png) ;; MP4 (*.mp4);; PNG (*.png);; "
@@ -37,11 +39,13 @@ class Widget(QWidget):
             self.ui.listWidget.addItem(os.path.basename(obj))
             self.listPath.append(directory[0])
 
+    # Удаление объектов.
     def deleteSelectedItem(self):
         selectitem = self.ui.listWidget.currentItem()
         if selectitem:
             self.ui.listWidget.takeItem(self.ui.listWidget.row(selectitem))
 
+    # Получение доп. информации.
     def showHelp(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
@@ -51,6 +55,7 @@ class Widget(QWidget):
         msg.exec_()
 
 
+# Точка выполнения программы.
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     widget = Widget()
