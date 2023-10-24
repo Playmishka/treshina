@@ -17,6 +17,10 @@ from ui_form import Ui_Widget
 class Widget(QWidget):
     listPath: list = []
 
+    rf = Roboflow(api_key="7WkAQlCwtd7XXisox596")
+    project = rf.workspace().project("trechina")
+    model = project.version(1).model
+
     # Конструктор класса окна приложения.
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -59,11 +63,8 @@ class Widget(QWidget):
         msg.exec_()
 
     def robo(self):
-        rf = Roboflow(api_key="7WkAQlCwtd7XXisox596")
-        project = rf.workspace().project("trechina")
-        model = project.version(1).model
-
-        model.predict(self.listPath[0][0], confidence=40, overlap=30).save("Prediction.jpg")
+        self.model.predict(self.listPath[0][0]).save("Prediction.jpg")
+        
 
 
 # Точка выполнения программы.
