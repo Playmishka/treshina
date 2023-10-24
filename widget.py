@@ -30,6 +30,7 @@ class Widget(QWidget):
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
         self.ui.ProcessingButton.clicked.connect(self.robo)
+        self.ui.listWidget.itemClicked.connect(self.ViewImage)
         
         # loader = QUiLoader()
         # ui_file = QFile("form.ui")
@@ -43,9 +44,12 @@ class Widget(QWidget):
                                                                         "*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);; PNG (*.png);; "
                                                                         "JPEG (*.jpeg);; JPG (*.jpg)")
 
+        # for obj in directory[0]:
+        #     self.ui.listWidget.addItem(os.path.basename(obj))
+        #     self.listPath.append(directory[0])
         for obj in directory[0]:
-            self.ui.listWidget.addItem(os.path.basename(obj))
-            self.listPath.append(directory[0])
+            self.ui.listWidget.addItem(obj)
+            
 
     # Удаление объектов.
     def deleteSelectedItem(self):
@@ -63,9 +67,13 @@ class Widget(QWidget):
         msg.exec_()
 
     def robo(self):
-        self.model.predict(self.listPath[0][0]).save("Prediction.jpg")
+        self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
+                           stroke=2).save("Prediction.jpg")
         
-
+    def ViewImage(self, item):
+        selectedItems = self.ui.listWidget.selectedItems()
+        for item in selectedItems:
+            self.ui.label_2.setPixmap(item.text())
 
 # Точка выполнения программы.
 if __name__ == "__main__":
