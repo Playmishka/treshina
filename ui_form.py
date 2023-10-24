@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGroupBox, QLabel, QListWidget,
-    QListWidgetItem, QProgressBar, QPushButton, QRadioButton,
-    QSizePolicy, QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QGraphicsView, QGroupBox, QLabel,
+    QListWidget, QListWidgetItem, QProgressBar, QPushButton,
+    QRadioButton, QSizePolicy, QTabWidget, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -56,6 +56,9 @@ class Ui_Widget(object):
 "background-color: rgb(171, 171, 171);")
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
+        self.ImageWiget = QGraphicsView(self.tab)
+        self.ImageWiget.setObjectName(u"ImageWiget")
+        self.ImageWiget.setGeometry(QRect(15, 11, 571, 501))
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
@@ -91,7 +94,7 @@ class Ui_Widget(object):
 
         self.retranslateUi(Widget)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Widget)
