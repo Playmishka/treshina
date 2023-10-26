@@ -74,10 +74,6 @@ class Widget(QWidget):
             self.ui.label_2.setPixmap(pixmap)  # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
 
         
-    #def ViewImage(self, item):
-    #    selectedItems = self.ui.listWidget.selectedItems()
-    #    for item in selectedItems:
-    #        self.ui.label_2.setPixmap(item.text())
 
 # Точка выполнения программы.
 if __name__ == "__main__":
