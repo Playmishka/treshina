@@ -84,10 +84,6 @@ class Widget(QWidget):
         self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
                            stroke=2).save("Prediction.jpg")
         
-    #def ViewImage(self, item):
-    #    selectedItems = self.ui.listWidget.selectedItems()
-    #    for item in selectedItems:
-    #        self.ui.label_2.setPixmap(item.text())
 
 # Точка выполнения программы.
 if __name__ == "__main__":
