@@ -5,8 +5,11 @@ import os
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
 
-from PySide6.QtGui import QPixmap  # класс, предоставляемый Qt и PySide6 для работы с изображениями
+# класс, предоставляемый Qt и PySide6 для работы с изображениями
+from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
+
+from roboflow import Roboflow
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -27,7 +30,7 @@ class Widget(QWidget):
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
         self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
-        
+
         # loader = QUiLoader()
         # ui_file = QFile("form.ui")
         # ui_file.open(QFile.ReadOnly)
@@ -45,9 +48,9 @@ class Widget(QWidget):
         #     self.listPath.append(directory[0])
         for obj in directory[0]:
             self.ui.listWidget.addItem(obj)
-            
 
     # Удаление объектов.
+
     def deleteSelectedItem(self):
         selectitem = self.ui.listWidget.currentItem()
         if selectitem:
@@ -58,21 +61,26 @@ class Widget(QWidget):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("You look pretty")
-        msg.setDetailedText("Здесь будет отображаться подсказка для пользователя.")
+        msg.setDetailedText(
+            "Здесь будет отображаться подсказка для пользователя.")
         msg.setWindowTitle("Помощь")
         msg.exec_()
 
-    #Отображение изображений
+    # Отображение изображений
     def ViewImage(self, item):
         selected_item = self.ui.listWidget.currentItem()
         if selected_item:
-            pixmap = QPixmap(selected_item.text())  # Загружаем изображение из пути, хранящегося в тексте элемента
+            # Загружаем изображение из пути, хранящегося в тексте элемента
+            pixmap = QPixmap(selected_item.text())
             self.ui.label_2.setFixedSize(300, 300)
             label_2_width = self.ui.label_2.width()  # Получаем ширину label_2
             label_2_height = self.ui.label_2.height()  # Получаем высоту label_2
             pixmap = pixmap.scaled(label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)  # Масштабируем изображение
             self.ui.label_2.setPixmap(pixmap)  # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
 
+    def robo(self):
+        self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
+                           stroke=2).save("Prediction.jpg")
         
 
 # Точка выполнения программы.
