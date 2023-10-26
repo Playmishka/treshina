@@ -28,14 +28,16 @@ class Ui_Widget(object):
 "background-color: rgb(212, 212, 212);")
         self.DeleteButton = QPushButton(Widget)
         self.DeleteButton.setObjectName(u"DeleteButton")
-        self.DeleteButton.setGeometry(QRect(10, 320, 151, 24))
+        self.DeleteButton.setGeometry(QRect(10, 360, 171, 24))
         self.DeleteButton.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Perpetua Titling MT\";")
+"font: 700 10pt \"Perpetua Titling MT\";\n"
+"border-radius: 7px;\n"
+"")
         self.groupBox_2 = QGroupBox(Widget)
         self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setGeometry(QRect(10, 360, 151, 71))
+        self.groupBox_2.setGeometry(QRect(10, 390, 171, 71))
         self.groupBox_2.setStyleSheet(u"background-color: rgb(231, 231, 231);\n"
-"\n"
+"border-radius: 7px;\n"
 "font: 700 10pt \"Perpetua Titling MT\";")
         self.radioButton = QRadioButton(self.groupBox_2)
         self.radioButton.setObjectName(u"radioButton")
@@ -45,56 +47,66 @@ class Ui_Widget(object):
         self.radioButton_2.setGeometry(QRect(10, 40, 89, 20))
         self.ProcessingButton = QPushButton(Widget)
         self.ProcessingButton.setObjectName(u"ProcessingButton")
-        self.ProcessingButton.setGeometry(QRect(10, 440, 151, 24))
-        self.ProcessingButton.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+        self.ProcessingButton.setGeometry(QRect(10, 470, 171, 24))
+        self.ProcessingButton.setStyleSheet(u"border-radius: 7px;\n"
+"background-color: rgb(255, 255, 255);\n"
 "font: 700 10pt \"Perpetua Titling MT\";")
         self.tabWidget = QTabWidget(Widget)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setGeometry(QRect(166, 40, 621, 551))
+        self.tabWidget.setGeometry(QRect(190, 40, 601, 551))
         self.tabWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "font: 700 10pt \"Perpetua Titling MT\";\n"
-"background-color: rgb(171, 171, 171);")
+"background-color: rgb(194, 194, 194);\n"
+"border-radius: 10px;")
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
-        self.label_2 = QLabel(self.tab)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(110, 90, 321, 351))
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.tabWidget.addTab(self.tab_2, "")
         self.progressBar = QProgressBar(Widget)
         self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setGeometry(QRect(10, 480, 151, 23))
+        self.progressBar.setGeometry(QRect(10, 500, 171, 23))
+        self.progressBar.setStyleSheet(u"")
         self.progressBar.setValue(24)
         self.HelpHelp = QPushButton(Widget)
         self.HelpHelp.setObjectName(u"HelpHelp")
-        self.HelpHelp.setGeometry(QRect(10, 550, 151, 24))
+        self.HelpHelp.setGeometry(QRect(10, 560, 171, 24))
         self.HelpHelp.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Perpetua Titling MT\";")
+"font: 700 10pt \"Perpetua Titling MT\";\n"
+"border-radius: 7px;\n"
+"\n"
+"")
         self.SaveButton = QPushButton(Widget)
         self.SaveButton.setObjectName(u"SaveButton")
-        self.SaveButton.setGeometry(QRect(10, 520, 151, 24))
+        self.SaveButton.setGeometry(QRect(10, 530, 171, 24))
         self.SaveButton.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Perpetua Titling MT\";")
+"font: 700 10pt \"Perpetua Titling MT\";\n"
+"border-radius: 7px;\n"
+"")
         self.listWidget = QListWidget(Widget)
         self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setGeometry(QRect(10, 80, 151, 231))
+        self.listWidget.setGeometry(QRect(10, 70, 171, 281))
         self.listWidget.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"font: 9pt \"PT Bold Heading\";")
+"font: 9pt \"PT Bold Heading\";\n"
+"border-radius: 3px;")
         self.DownloadVideoButton = QPushButton(Widget)
         self.DownloadVideoButton.setObjectName(u"DownloadVideoButton")
-        self.DownloadVideoButton.setGeometry(QRect(10, 40, 151, 24))
+        self.DownloadVideoButton.setGeometry(QRect(10, 40, 171, 24))
         self.DownloadVideoButton.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"font: 700 10pt \"Perpetua Titling MT\";")
+"font: 700 10pt \"Perpetua Titling MT\";\n"
+"border-radius: 7px;")
         self.label = QLabel(Widget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 10, 481, 16))
-        self.label.setStyleSheet(u"font: 600 12pt \"Bahnschrift SemiBold SemiConden\";")
+        self.label.setGeometry(QRect(10, 10, 501, 16))
+        self.label.setStyleSheet(u"font: 700 10pt \"Perpetua Titling MT\";\n"
+"font-weight: bold;\n"
+"Front-size: 40pt;\n"
+"")
 
         self.retranslateUi(Widget)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -107,7 +119,6 @@ class Ui_Widget(object):
         self.radioButton.setText(QCoreApplication.translate("Widget", u"\u0424\u043e\u0442\u043e ", None))
         self.radioButton_2.setText(QCoreApplication.translate("Widget", u"\u0412\u0438\u0434\u0435\u043e", None))
         self.ProcessingButton.setText(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c", None))
-        self.label_2.setText(QCoreApplication.translate("Widget", u"TextLabel", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"\u0424\u0430\u0439\u043b \u0434\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Widget", u"\u0424\u0430\u0439\u043b \u043f\u043e\u0441\u043b\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438", None))
         self.HelpHelp.setText(QCoreApplication.translate("Widget", u"\u0421\u043f\u0440\u0430\u0432\u043a\u0430", None))
