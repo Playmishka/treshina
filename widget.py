@@ -8,8 +8,6 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import QPixmap  # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtCore import Qt
 
-from roboflow import Roboflow
-
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
@@ -20,10 +18,6 @@ from ui_form import Ui_Widget
 class Widget(QWidget):
     listPath: list = []
 
-    rf = Roboflow(api_key="7WkAQlCwtd7XXisox596")
-    project = rf.workspace().project("trechina")
-    model = project.version(1).model
-
     # Конструктор класса окна приложения.
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -32,7 +26,6 @@ class Widget(QWidget):
         self.ui.DownloadVideoButton.clicked.connect(self.getMaterialVP)
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
-        self.ui.ProcessingButton.clicked.connect(self.robo)
         self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
         
         # loader = QUiLoader()
@@ -80,9 +73,6 @@ class Widget(QWidget):
             pixmap = pixmap.scaled(label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)  # Масштабируем изображение
             self.ui.label_2.setPixmap(pixmap)  # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
 
-    def robo(self):
-        self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
-                           stroke=2).save("Prediction.jpg")
         
     #def ViewImage(self, item):
     #    selectedItems = self.ui.listWidget.selectedItems()

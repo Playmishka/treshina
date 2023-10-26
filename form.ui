@@ -21,14 +21,16 @@ background-color: rgb(212, 212, 212);</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>320</y>
-     <width>151</width>
+     <y>360</y>
+     <width>171</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
-font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
+font: 700 10pt &quot;Perpetua Titling MT&quot;;
+border-radius: 7px;
+</string>
    </property>
    <property name="text">
     <string>Удалить файл</string>
@@ -38,14 +40,14 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>360</y>
-     <width>151</width>
+     <y>390</y>
+     <width>171</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(231, 231, 231);
-
+border-radius: 7px;
 font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    </property>
    <property name="title">
@@ -82,13 +84,14 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>440</y>
-     <width>151</width>
+     <y>470</y>
+     <width>171</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
+    <string notr="true">border-radius: 7px;
+background-color: rgb(255, 255, 255);
 font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    </property>
    <property name="text">
@@ -98,37 +101,25 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>166</x>
+     <x>190</x>
      <y>40</y>
-     <width>621</width>
+     <width>601</width>
      <height>551</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
 font: 700 10pt &quot;Perpetua Titling MT&quot;;
-background-color: rgb(171, 171, 171);</string>
+background-color: rgb(194, 194, 194);
+border-radius: 10px;</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>Файл до обработки</string>
     </attribute>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>90</y>
-       <width>321</width>
-       <height>351</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -140,10 +131,13 @@ background-color: rgb(171, 171, 171);</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>480</y>
-     <width>151</width>
+     <y>500</y>
+     <width>171</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="value">
     <number>24</number>
@@ -153,14 +147,17 @@ background-color: rgb(171, 171, 171);</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>550</y>
-     <width>151</width>
+     <y>560</y>
+     <width>171</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
-font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
+font: 700 10pt &quot;Perpetua Titling MT&quot;;
+border-radius: 7px;
+
+</string>
    </property>
    <property name="text">
     <string>Справка</string>
@@ -170,14 +167,16 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>520</y>
-     <width>151</width>
+     <y>530</y>
+     <width>171</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
-font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
+font: 700 10pt &quot;Perpetua Titling MT&quot;;
+border-radius: 7px;
+</string>
    </property>
    <property name="text">
     <string>Сохранить</string>
@@ -187,14 +186,15 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>151</width>
-     <height>231</height>
+     <y>70</y>
+     <width>171</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
-font: 9pt &quot;PT Bold Heading&quot;;</string>
+font: 9pt &quot;PT Bold Heading&quot;;
+border-radius: 3px;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="DownloadVideoButton">
@@ -202,13 +202,14 @@ font: 9pt &quot;PT Bold Heading&quot;;</string>
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>151</width>
+     <width>171</width>
      <height>24</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);
-font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
+font: 700 10pt &quot;Perpetua Titling MT&quot;;
+border-radius: 7px;</string>
    </property>
    <property name="text">
     <string>Загрузить файл</string>
@@ -219,12 +220,15 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>481</width>
+     <width>501</width>
      <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 600 12pt &quot;Bahnschrift SemiBold SemiConden&quot;;</string>
+    <string notr="true">font: 700 10pt &quot;Perpetua Titling MT&quot;;
+font-weight: bold;
+Front-size: 40pt;
+</string>
    </property>
    <property name="text">
     <string>Программный комплекс определения деформаций зданий и сооружений </string>
