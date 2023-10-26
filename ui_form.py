@@ -18,7 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QGroupBox, QLabel, QListWidget,
     QListWidgetItem, QProgressBar, QPushButton, QRadioButton,
     QSizePolicy, QTabWidget, QWidget)
-
+#тест обучение гитхабы
 class Ui_Widget(object):
     def setupUi(self, Widget):
         if not Widget.objectName():
