@@ -9,7 +9,6 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 
-from roboflow import Roboflow
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -75,13 +74,12 @@ class Widget(QWidget):
             self.ui.label_2.setFixedSize(300, 300)
             label_2_width = self.ui.label_2.width()  # Получаем ширину label_2
             label_2_height = self.ui.label_2.height()  # Получаем высоту label_2
-            pixmap = pixmap.scaled(label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)  # Масштабируем изображение
-            self.ui.label_2.setPixmap(pixmap)  # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
+            # Масштабируем изображение
+            pixmap = pixmap.scaled(
+                label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)
+            # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
+            self.ui.label_2.setPixmap(pixmap)
 
-    def robo(self):
-        self.model.predict(self.listPath[0][0], classes="window", labels=True, overlap=30, confidence=40,
-                           stroke=2).save("Prediction.jpg")
-        
 
 # Точка выполнения программы.
 if __name__ == "__main__":
