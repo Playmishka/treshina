@@ -1,6 +1,5 @@
 # This Python file uses the following encoding: utf-8
 import sys
-import os
 
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
@@ -9,6 +8,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 
+from ultralytics import YOLO, settings
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -19,6 +19,7 @@ from ui_form import Ui_Widget
 
 class Widget(QWidget):
     listPath: list = []
+    model = YOLO("model/best.pt")
 
     # Конструктор класса окна приложения.
     def __init__(self, parent=None):
@@ -29,6 +30,7 @@ class Widget(QWidget):
         self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
         self.ui.HelpHelp.clicked.connect(self.showHelp)
         self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
+        self.ui.ProcessingButton.clicked.connect(self.process)
 
         # loader = QUiLoader()
         # ui_file = QFile("form.ui")
@@ -47,6 +49,7 @@ class Widget(QWidget):
         #     self.listPath.append(directory[0])
         for obj in directory[0]:
             self.ui.listWidget.addItem(obj)
+            self.listPath.append(obj)
 
     # Удаление объектов.
 
@@ -66,7 +69,7 @@ class Widget(QWidget):
         msg.exec_()
 
     # Отображение изображений
-    def ViewImage(self, item):
+    def ViewImage(self):
         selected_item = self.ui.listWidget.currentItem()
         if selected_item:
             # Загружаем изображение из пути, хранящегося в тексте элемента
@@ -79,6 +82,11 @@ class Widget(QWidget):
                 label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)
             # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
             self.ui.label_2.setPixmap(pixmap)
+
+    def process(self):
+        self.model.predict(source=self.listPath, save=True, conf=0.1)
+        # print(settings)
+        print("Обработка завершена. Посмотри результаты в папке runs :)")
 
 
 # Точка выполнения программы.

@@ -1,2 +1,4 @@
 Соня, установи библиотеку roboflow
 pip install roboflow
+Установите бибилиотеку ulralytics
+pip install ultralytics
