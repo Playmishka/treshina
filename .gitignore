@@ -1,2 +1,6 @@
-venv/
-/.vscode
+venv
+.vscode
+dist
+build
+.idea
+widget.spec
