@@ -3,12 +3,10 @@ import os.path
 import sys
 
 from PySide6 import QtWidgets
-from PySide6.QtWidgets import *
-
 # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import *
 from PySide6.QtCore import Qt
-
 from ultralytics import YOLO
 
 # Important:
@@ -89,7 +87,6 @@ class Widget(QWidget):
 		if selected_item:
 			# Загружаем изображение из пути, хранящегося в тексте элемента
 			pixmap = QPixmap(selected_item.text())
-			self.ui.ImageFile.setFixedSize(300, 300)
 			ImageFile_width = self.ui.ImageFile.width()  # Получаем ширину label_2
 			ImageFile_height = self.ui.ImageFile.height()  # Получаем высоту label_2
 			# Масштабируем изображение
