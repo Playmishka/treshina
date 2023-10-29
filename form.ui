@@ -114,17 +114,58 @@ background-color: rgb(194, 194, 194);
 border-radius: 10px;</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>Файл до обработки</string>
     </attribute>
+    <widget class="QLabel" name="ImageFile">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>15</y>
+       <width>551</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
      <string>Файл после обработки</string>
     </attribute>
+    <widget class="QLabel" name="ImageAfterProc">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>20</y>
+       <width>561</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="HelpHelp">
@@ -227,8 +268,14 @@ Front-size: 40pt;
      <height>25</height>
     </rect>
    </property>
+   <property name="maximum">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.100000000000000</double>
+   </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="Text">
    <property name="geometry">
     <rect>
      <x>10</x>

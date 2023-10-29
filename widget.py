@@ -4,6 +4,7 @@ import sys
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
 
+
 # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
@@ -78,14 +79,15 @@ class Widget(QWidget):
 		if selected_item:
 			# Загружаем изображение из пути, хранящегося в тексте элемента
 			pixmap = QPixmap(selected_item.text())
-			self.ui.label_2.setFixedSize(300, 300)
-			label_2_width = self.ui.label_2.width()  # Получаем ширину label_2
-			label_2_height = self.ui.label_2.height()  # Получаем высоту label_2
+			self.ui.ImageFile.setFixedSize(300, 300)
+			ImageFile_width = self.ui.ImageFile.width()  # Получаем ширину label_2
+			ImageFile_height = self.ui.ImageFile.height()  # Получаем высоту label_2
 			# Масштабируем изображение
 			pixmap = pixmap.scaled(
-				label_2_width, label_2_height, aspectMode=Qt.KeepAspectRatio)
+				ImageFile_width, ImageFile_height, aspectMode=Qt.KeepAspectRatio)
 			# В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
-			self.ui.label_2.setPixmap(pixmap)
+			
+			self.ui.ImageFile.setPixmap(pixmap)
 
 	def process(self):
 		print(len(self.listPath))

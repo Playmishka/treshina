@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDoubleSpinBox, QGroupBox, QLabel,
-    QListWidget, QListWidgetItem, QPushButton, QRadioButton,
-    QSizePolicy, QTabWidget, QWidget)
+from PySide6.QtWidgets import (QApplication, QDoubleSpinBox, QFrame, QGroupBox,
+    QLabel, QListWidget, QListWidgetItem, QPushButton,
+    QRadioButton, QSizePolicy, QTabWidget, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -60,9 +60,20 @@ class Ui_Widget(object):
 "border-radius: 10px;")
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
+        self.ImageFile = QLabel(self.tab)
+        self.ImageFile.setObjectName(u"ImageFile")
+        self.ImageFile.setGeometry(QRect(18, 15, 551, 491))
+        self.ImageFile.setScaledContents(True)
+        self.ImageFile.setAlignment(Qt.AlignCenter)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
+        self.ImageAfterProc = QLabel(self.tab_2)
+        self.ImageAfterProc.setObjectName(u"ImageAfterProc")
+        self.ImageAfterProc.setGeometry(QRect(18, 20, 561, 491))
+        self.ImageAfterProc.setLayoutDirection(Qt.LeftToRight)
+        self.ImageAfterProc.setFrameShape(QFrame.NoFrame)
+        self.ImageAfterProc.setAlignment(Qt.AlignCenter)
         self.tabWidget.addTab(self.tab_2, "")
         self.HelpHelp = QPushButton(Widget)
         self.HelpHelp.setObjectName(u"HelpHelp")
@@ -101,17 +112,19 @@ class Ui_Widget(object):
         self.doubleSpinBox = QDoubleSpinBox(Widget)
         self.doubleSpinBox.setObjectName(u"doubleSpinBox")
         self.doubleSpinBox.setGeometry(QRect(10, 480, 171, 25))
-        self.label_2 = QLabel(Widget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(10, 440, 171, 31))
-        self.label_2.setStyleSheet(u"background-color: rgb(194, 194, 194);\n"
+        self.doubleSpinBox.setMaximum(1.000000000000000)
+        self.doubleSpinBox.setSingleStep(0.100000000000000)
+        self.Text = QLabel(Widget)
+        self.Text.setObjectName(u"Text")
+        self.Text.setGeometry(QRect(10, 440, 171, 31))
+        self.Text.setStyleSheet(u"background-color: rgb(194, 194, 194);\n"
 "font: 700 10pt \"Perpetua Titling MT\";\n"
 "border-radius: 7px;\n"
 "")
 
         self.retranslateUi(Widget)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -124,12 +137,14 @@ class Ui_Widget(object):
         self.radioButton.setText(QCoreApplication.translate("Widget", u"\u0424\u043e\u0442\u043e ", None))
         self.radioButton_2.setText(QCoreApplication.translate("Widget", u"\u0412\u0438\u0434\u0435\u043e", None))
         self.ProcessingButton.setText(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c", None))
+        self.ImageFile.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"\u0424\u0430\u0439\u043b \u0434\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438", None))
+        self.ImageAfterProc.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("Widget", u"\u0424\u0430\u0439\u043b \u043f\u043e\u0441\u043b\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438", None))
         self.HelpHelp.setText(QCoreApplication.translate("Widget", u"\u0421\u043f\u0440\u0430\u0432\u043a\u0430", None))
         self.SaveButton.setText(QCoreApplication.translate("Widget", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
         self.DownloadVideoButton.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0444\u0430\u0439\u043b", None))
         self.label.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043d\u044b\u0439 \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0441 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u0434\u0435\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0439 \u0437\u0434\u0430\u043d\u0438\u0439 \u0438 \u0441\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u0439 ", None))
-        self.label_2.setText(QCoreApplication.translate("Widget", u"\u041a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438:", None))
+        self.Text.setText(QCoreApplication.translate("Widget", u"\u041a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438:", None))
     # retranslateUi
 
