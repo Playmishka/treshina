@@ -1,4 +1,5 @@
 # This Python file uses the following encoding: utf-8
+import os.path
 import sys
 
 from PySide6 import QtWidgets
@@ -8,7 +9,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
 
-from ultralytics import YOLO, settings
+from ultralytics import YOLO
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -18,7 +19,12 @@ from ui_form import Ui_Widget
 
 
 class Widget(QWidget):
-	listPath: list = []
+	listImage: list = []
+	listVideo: list = []
+	VideoExtensions: list = [".asf", ".avi", ".gif", ".m4v", ".mkv", ".mov", ".mp4", ".mpeg", ".mpg", ".ts", ".wmv",
+							 ".webm"]
+	imageExtensions: list = [".dmp", ".dng", ".jpeg", ".jpg", ".mpo", ".png", ".tif", ".tiff", ".webp", ".pfm"]
+
 	model = YOLO("model/best.pt")
 
 	# Конструктор класса окна приложения.
@@ -43,24 +49,21 @@ class Widget(QWidget):
 		directory = QtWidgets.QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
 																		"*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);;"
 																		"PNG (*.png);; JPEG (*.jpeg);; JPG (*.jpg)")
-
-		# for obj in directory[0]:
-		#     self.ui.listWidget.addItem(os.path.basename(obj))
-		#     self.listPath.append(directory[0])
 		for obj in directory[0]:
-			self.ui.listWidget.addItem(obj)
-			self.listPath.append(obj)
+			filename, file_extension = os.path.splitext(obj)
+			self.ui.listWidget.addItem(filename)
+			if file_extension in self.imageExtensions:
+				self.listImage.append(obj)
+			else:
+				self.listVideo.append(obj)
+			print(self.listImage, self.listVideo)
 
 	# Удаление объектов.
-
 	def deleteSelectedItem(self):
-		selectitem = self.ui.listWidget.currentItem()
-		print(self.listPath)
-		if selectitem:
-			self.ui.listWidget.takeItem(self.ui.listWidget.row(selectitem))
-			print("Файл удален!")
-			self.listPath.remove(selectitem.text())
-		print(self.listPath)
+		select_item = self.ui.listWidget.currentItem()
+		if select_item:
+			self.ui.listWidget.takeItem(self.ui.listWidget.row(select_item))
+
 
 	# Получение доп. информации.
 	def showHelp(self):
@@ -96,8 +99,8 @@ class Widget(QWidget):
 			msg.setWindowTitle("Ошибка")
 			msg.exec_()
 		else:
-			settings.update(save_dir="/")
-			self.model.predict(self.listPath, show=False, save=True, conf=0.1)
+			pass
+	# self.model.predict(self.listPath, show=False, stream=stream, save=True, conf=0.1)
 
 
 # Точка выполнения программы.
