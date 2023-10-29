@@ -5,7 +5,6 @@ import sys
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import *
 
-
 # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt
@@ -51,8 +50,9 @@ class Widget(QWidget):
 																		"*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);;"
 																		"PNG (*.png);; JPEG (*.jpeg);; JPG (*.jpg)")
 		for obj in directory[0]:
+			print(obj)
 			filename, file_extension = os.path.splitext(obj)
-			self.ui.listWidget.addItem(filename)
+			self.ui.listWidget.addItem(obj)
 			if file_extension in self.imageExtensions:
 				self.listImage.append(obj)
 			else:
@@ -64,7 +64,14 @@ class Widget(QWidget):
 		select_item = self.ui.listWidget.currentItem()
 		if select_item:
 			self.ui.listWidget.takeItem(self.ui.listWidget.row(select_item))
-
+			if select_item.text() in self.listVideo:
+				self.listVideo.remove(select_item.text())
+				print("Удалено видео!")
+				print(self.listVideo)
+			else:
+				self.listImage.remove(select_item.text())
+				print("Удалено фото!")
+				print(self.listImage)
 
 	# Получение доп. информации.
 	def showHelp(self):
@@ -89,25 +96,25 @@ class Widget(QWidget):
 			pixmap = pixmap.scaled(
 				ImageFile_width, ImageFile_height, aspectMode=Qt.KeepAspectRatio)
 			# В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
-			
+
 			self.ui.ImageFile.setPixmap(pixmap)
 
 	def process(self):
-		print(len(self.listPath))
-		if len(self.listPath) == 0:
+		if self.ui.isImage.isChecked() & len(self.listImage) != 0:
+			self.model.predict(source=self.listImage, save=True, conf=self.ui.doubleSpinBox.value())
+		elif self.ui.isVideo.isChecked() & len(self.listVideo) != 0:
+			self.model.predict(source=self.listVideo, stream=True, save=True, conf=self.ui.doubleSpinBox.value())
+		else:
 			msg = QMessageBox()
 			msg.setIcon(QMessageBox.Icon.Critical)
 			msg.setText("Отсутствуют файлы для обработки")
 			msg.setWindowTitle("Ошибка")
 			msg.exec_()
-		else:
-			pass
-	# self.model.predict(self.listPath, show=False, stream=stream, save=True, conf=0.1)
 
 
 # Точка выполнения программы.
 if __name__ == "__main__":
-	app = QApplication(sys.argv)
+	app = QApplication()
 	widget = Widget()
 	widget.show()
 	sys.exit(app.exec())
