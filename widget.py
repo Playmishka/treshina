@@ -2,14 +2,13 @@
 import sys
 
 from PySide6 import QtWidgets
-from PySide6.QtWidgets import *
-
+from PySide6.QtCore import Qt
 
 # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtGui import QPixmap
-from PySide6.QtCore import Qt
-
+from PySide6.QtWidgets import *
 from ultralytics import YOLO, settings
+
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -32,6 +31,8 @@ class Widget(QWidget):
 		self.ui.HelpHelp.clicked.connect(self.showHelp)
 		self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
 		self.ui.ProcessingButton.clicked.connect(self.process)
+
+
 
 	# loader = QUiLoader()
 	# ui_file = QFile("form.ui")
@@ -79,15 +80,16 @@ class Widget(QWidget):
 		if selected_item:
 			# Загружаем изображение из пути, хранящегося в тексте элемента
 			pixmap = QPixmap(selected_item.text())
-			self.ui.ImageFile.setFixedSize(300, 300)
 			ImageFile_width = self.ui.ImageFile.width()  # Получаем ширину label_2
 			ImageFile_height = self.ui.ImageFile.height()  # Получаем высоту label_2
 			# Масштабируем изображение
 			pixmap = pixmap.scaled(
 				ImageFile_width, ImageFile_height, aspectMode=Qt.KeepAspectRatio)
 			# В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
-			
+
 			self.ui.ImageFile.setPixmap(pixmap)
+
+
 
 	def process(self):
 		print(len(self.listPath))
