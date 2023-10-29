@@ -16,6 +16,16 @@ from ultralytics import YOLO
 from ui_form import Ui_Widget
 
 
+def showHelp():
+	msg = QMessageBox()
+	msg.setIcon(QMessageBox.Icon.Information)
+	msg.setText("You look pretty")
+	msg.setDetailedText(
+		"Здесь будет отображаться подсказка для пользователя.")
+	msg.setWindowTitle("Помощь")
+	msg.exec_()
+
+
 class Widget(QWidget):
 	listImage: list = []
 	listVideo: list = []
@@ -32,7 +42,7 @@ class Widget(QWidget):
 		self.ui.setupUi(self)
 		self.ui.DownloadVideoButton.clicked.connect(self.getMaterialVP)
 		self.ui.DeleteButton.clicked.connect(self.deleteSelectedItem)
-		self.ui.HelpHelp.clicked.connect(self.showHelp)
+		self.ui.HelpHelp.clicked.connect(showHelp)
 		self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
 		self.ui.ProcessingButton.clicked.connect(self.process)
 
@@ -72,14 +82,6 @@ class Widget(QWidget):
 				print(self.listImage)
 
 	# Получение доп. информации.
-	def showHelp(self):
-		msg = QMessageBox()
-		msg.setIcon(QMessageBox.Icon.Information)
-		msg.setText("You look pretty")
-		msg.setDetailedText(
-			"Здесь будет отображаться подсказка для пользователя.")
-		msg.setWindowTitle("Помощь")
-		msg.exec_()
 
 	# Отображение изображений
 	def ViewImage(self):
