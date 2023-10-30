@@ -2,11 +2,12 @@
 import os.path
 import sys
 
+import PySide6
 from PySide6 import QtWidgets
 # класс, предоставляемый Qt и PySide6 для работы с изображениями
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import *
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QSize
 from ultralytics import YOLO
 
 # Important:
@@ -92,10 +93,10 @@ class Widget(QWidget):
 			ImageFile_width = self.ui.ImageFile.width()  # Получаем ширину label_2
 			ImageFile_height = self.ui.ImageFile.height()  # Получаем высоту label_2
 			# Масштабируем изображение
-			pixmap = pixmap.scaled(
-				ImageFile_width, ImageFile_height, aspectMode=Qt.KeepAspectRatio)
-			# В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
 
+			pixmap = pixmap.scaled(QSize(ImageFile_width, ImageFile_height), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation)
+
+			# В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
 			self.ui.ImageFile.setPixmap(pixmap)
 
 	def process(self):

@@ -55,6 +55,7 @@ class Ui_Widget(object):
         self.isVideo.setGeometry(QRect(10, 40, 89, 20))
         self.ProcessingButton = QPushButton(Widget)
         self.ProcessingButton.setObjectName(u"ProcessingButton")
+        self.ProcessingButton.setEnabled(False)
         self.ProcessingButton.setGeometry(QRect(10, 510, 171, 24))
         self.ProcessingButton.setStyleSheet(u"border-radius: 7px;\n"
 "background-color: rgb(255, 255, 255);\n"
@@ -98,6 +99,7 @@ class Ui_Widget(object):
 "font: 700 10pt \"Perpetua Titling MT\";\n"
 "border-radius: 7px;\n"
 "")
+        self.SaveButton.setCheckable(False)
         self.listWidget = QListWidget(Widget)
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setGeometry(QRect(10, 70, 171, 261))
