@@ -97,7 +97,7 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
   </widget>
   <widget class="QPushButton" name="ProcessingButton">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>

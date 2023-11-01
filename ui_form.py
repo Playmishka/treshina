@@ -55,7 +55,7 @@ class Ui_Widget(object):
         self.isVideo.setGeometry(QRect(10, 40, 89, 20))
         self.ProcessingButton = QPushButton(Widget)
         self.ProcessingButton.setObjectName(u"ProcessingButton")
-        self.ProcessingButton.setEnabled(False)
+        self.ProcessingButton.setEnabled(True)
         self.ProcessingButton.setGeometry(QRect(10, 510, 171, 24))
         self.ProcessingButton.setStyleSheet(u"border-radius: 7px;\n"
 "background-color: rgb(255, 255, 255);\n"
