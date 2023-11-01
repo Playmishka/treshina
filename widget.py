@@ -2,9 +2,8 @@
 import os.path
 import sys
 
-import PySide6
 from PySide6 import QtWidgets
-# класс, предоставляемый Qt и PySide6 для работы с изображениями
+
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import *
 from PySide6.QtCore import Qt, QSize
