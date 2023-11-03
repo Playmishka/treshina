@@ -115,6 +115,7 @@ class Widget(QWidget):
 
         if self.path_save:
             for root, dirs, files in os.walk(self.path_save):
+                print(root, dirs, files)
                 if select_item.text() in files:
                     path = os.path.join(root, select_item.text())
 
