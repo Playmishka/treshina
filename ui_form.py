@@ -112,10 +112,9 @@ class Ui_Widget(object):
 "border-radius: 7px;")
         self.label = QLabel(Widget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 10, 501, 16))
+        self.label.setGeometry(QRect(10, 10, 600, 16))
         self.label.setStyleSheet(u"font: 700 10pt \"Perpetua Titling MT\";\n"
 "font-weight: bold;\n"
-"Front-size: 40pt;\n"
 "")
         self.doubleSpinBox = QDoubleSpinBox(Widget)
         self.doubleSpinBox.setObjectName(u"doubleSpinBox")

@@ -260,14 +260,14 @@ border-radius: 7px;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>501</width>
+     <width>600</width>
      <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 700 10pt &quot;Perpetua Titling MT&quot;;
 font-weight: bold;
-Front-size: 40pt;
+<!-- font-size: 40pt; -->
 </string>
    </property>
    <property name="text">
