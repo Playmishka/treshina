@@ -35,6 +35,8 @@ class Widget(QWidget):
                              ".mpo", ".png", ".tif", ".tiff", ".webp", ".pfm"]
 
     model = YOLO("model/best.pt")
+    path_save: str = None
+    is_proccess: bool = False
 
     # Конструктор класса окна приложения.
     def __init__(self, parent=None):
@@ -60,7 +62,7 @@ class Widget(QWidget):
                                                            "PNG (*.png);; JPEG (*.jpeg);; JPG (*.jpg)")
         for obj in directory[0]:
             filename, file_extension = os.path.splitext(obj)
-            self.ui.listWidget.addItem(obj)
+            self.ui.listWidget.addItem(os.path.basename(obj))
             if file_extension in self.imageExtensions:
                 self.listImage.append(obj)
             else:
@@ -71,41 +73,73 @@ class Widget(QWidget):
         select_item = self.ui.listWidget.currentItem()
         if select_item:
             self.ui.listWidget.takeItem(self.ui.listWidget.row(select_item))
-            if select_item.text() in self.listVideo:
-                self.listVideo.remove(select_item.text())
+
+            name, extention = os.path.splitext(select_item.text())
+            if extention in self.imageExtensions:
+                for item_list in self.listImage:
+                    if item_list.find(select_item.text()) != -1:
+                        self.listImage.remove(item_list)
             else:
-                self.listImage.remove(select_item.text())
+                for item_list in self.listVideo:
+                    if item_list.find(select_item.text()) != -1:
+                        self.listVideo.remove(item_list)
+
+        print(self.listVideo, self.listImage)
 
     # Отображение изображений
     def ViewImage(self):
-        selected_item = self.ui.listWidget.currentItem()
-        if selected_item:
+        path_file: str
+
+        select_item = self.ui.listWidget.currentItem()
+        name, extention = os.path.splitext(select_item.text())
+
+        if extention in self.imageExtensions:
+            for item_list in self.listImage:
+                if item_list.find(select_item.text()) != -1:
+                    path_file = item_list
+        else:
+            for item_list in self.listVideo:
+                if item_list.find(select_item.text()) != -1:
+                    path_file = item_list
+
+        if path_file:
             # Загружаем изображение из пути, хранящегося в тексте элемента
-            pixmap = QPixmap(selected_item.text())
+            pixmap = QPixmap(path_file)
             ImageFile_width = self.ui.ImageFile.width()  # Получаем ширину label_2
             ImageFile_height = self.ui.ImageFile.height()  # Получаем высоту label_2
             # Масштабируем изображение
 
             pixmap = pixmap.scaled(QSize(ImageFile_width, ImageFile_height),
                                    Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation)
-
-            # В этой строке мы устанавливаем загруженное изображение (pixmap) в label_2
             self.ui.ImageFile.setPixmap(pixmap)
 
+        if self.path_save:
+            for root, dirs, files in os.walk(self.path_save):
+                if select_item.text() in files:
+                    path = os.path.join(root, select_item.text())
+
+                    pixmap = QPixmap(path)
+                    ImageFile_width = self.ui.ImageAfterProc.width()  # Получаем ширину label_2
+                    ImageFile_height = self.ui.ImageAfterProc.height()  # Получаем высоту label_2
+            # Масштабируем изображение
+
+                    pixmap = pixmap.scaled(QSize(ImageFile_width, ImageFile_height),
+                                           Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation)
+                    self.ui.ImageAfterProc.setPixmap(pixmap)
+
     def process(self):
-        path_save = QFileDialog.getExistingDirectory(
+        self.path_save = QFileDialog.getExistingDirectory(
             None, "папка для сохранения")
 
-        if path_save:
+        if self.path_save:
             if self.ui.isImage.isChecked() & len(self.listImage) != 0:
                 self.model.predict(source=self.listImage, save=True,
-                                   conf=self.ui.doubleSpinBox.value(), project=path_save)
+                                   conf=self.ui.doubleSpinBox.value(), project=self.path_save)
+                self.is_proccess = True
             elif self.ui.isVideo.isChecked() & len(self.listVideo) != 0:
                 self.model.predict(source=self.listVideo, stream=True,
-                                   save=True, conf=self.ui.doubleSpinBox.value(), project=path_save)
-
-                source_folder = "runs/detect/predict"
-                print(path_save, source_folder)
+                                   save=True, conf=self.ui.doubleSpinBox.value(), project=self.path_save)
+                self.is_proccess = True
             else:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Icon.Critical)
