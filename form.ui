@@ -96,9 +96,6 @@ font: 700 10pt &quot;Perpetua Titling MT&quot;;</string>
    </widget>
   </widget>
   <widget class="QPushButton" name="ProcessingButton">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -151,7 +148,7 @@ border-radius: 10px;</string>
       <string/>
      </property>
      <property name="scaledContents">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -223,9 +220,6 @@ border-radius: 7px;
    </property>
    <property name="text">
     <string>Сохранить</string>
-   </property>
-   <property name="checkable">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">

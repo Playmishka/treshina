@@ -55,7 +55,6 @@ class Ui_Widget(object):
         self.isVideo.setGeometry(QRect(10, 40, 89, 20))
         self.ProcessingButton = QPushButton(Widget)
         self.ProcessingButton.setObjectName(u"ProcessingButton")
-        self.ProcessingButton.setEnabled(True)
         self.ProcessingButton.setGeometry(QRect(10, 510, 171, 24))
         self.ProcessingButton.setStyleSheet(u"border-radius: 7px;\n"
 "background-color: rgb(255, 255, 255);\n"
@@ -72,7 +71,7 @@ class Ui_Widget(object):
         self.ImageFile = QLabel(self.tab)
         self.ImageFile.setObjectName(u"ImageFile")
         self.ImageFile.setGeometry(QRect(18, 15, 551, 491))
-        self.ImageFile.setScaledContents(True)
+        self.ImageFile.setScaledContents(False)
         self.ImageFile.setAlignment(Qt.AlignCenter)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
@@ -99,7 +98,6 @@ class Ui_Widget(object):
 "font: 700 10pt \"Perpetua Titling MT\";\n"
 "border-radius: 7px;\n"
 "")
-        self.SaveButton.setCheckable(False)
         self.listWidget = QListWidget(Widget)
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setGeometry(QRect(10, 70, 171, 261))
