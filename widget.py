@@ -84,8 +84,6 @@ class Widget(QWidget):
                     if item_list.find(select_item.text()) != -1:
                         self.listVideo.remove(item_list)
 
-        print(self.listVideo, self.listImage)
-
     # Отображение изображений
     def ViewImage(self):
         path_file: str
@@ -115,7 +113,6 @@ class Widget(QWidget):
 
         if self.path_save:
             for root, dirs, files in os.walk(self.path_save):
-                print(root, dirs, files)
                 if select_item.text() in files:
                     path = os.path.join(root, select_item.text())
 
