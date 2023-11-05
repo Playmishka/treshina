@@ -34,7 +34,7 @@ class Widget(QWidget):
     imageExtensions: list = [".dmp", ".dng", ".jpeg", ".jpg",
                              ".mpo", ".png", ".tif", ".tiff", ".webp", ".pfm"]
 
-    model = YOLO("model/best.pt")
+    model = YOLO("best.pt")
     path_save: str = None
     is_proccess: bool = False
 
