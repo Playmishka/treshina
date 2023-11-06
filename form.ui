@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1079</width>
-    <height>615</height>
+    <width>1109</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,7 +23,11 @@
    <bool>false</bool>
   </property>
   <property name="windowTitle">
-   <string>Сибирский государственный университет геосистем и технологий </string>
+   <string>Программный комплекс определения деформаций сооружений </string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.ico</normaloff>icon.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(120, 120, 120);
@@ -46,8 +50,9 @@
           <font>
            <family>Segoe UI Variable Small Semilig</family>
            <pointsize>12</pointsize>
+           <weight>44</weight>
            <italic>false</italic>
-           <fontweight></fontweight>
+           <bold>false</bold>
           </font>
          </property>
          <property name="mouseTracking">
@@ -141,6 +146,9 @@ color: rgb(255, 255, 255);</string>
         </item>
         <item>
          <widget class="QRadioButton" name="isVideo">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -167,8 +175,9 @@ color: rgb(255, 255, 255);</string>
         <font>
          <family>Segoe UI Variable Small Semibol</family>
          <pointsize>10</pointsize>
+         <weight>75</weight>
          <italic>false</italic>
-         <fontweight>DemiBold</fontweight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="layoutDirection">
@@ -309,8 +318,11 @@ color: rgb(72, 72, 72);
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::DefaultContextMenu</enum>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(83, 83, 83);</string>
          </property>
          <property name="text">
           <string/>
@@ -346,7 +358,7 @@ color: rgb(72, 72, 72);
           <enum>Qt::LeftToRight</enum>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);</string>
+          <string notr="true">background-color: rgb(83, 83, 83);</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
