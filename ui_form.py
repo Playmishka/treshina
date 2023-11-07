@@ -116,7 +116,7 @@ class Ui_Widget(object):
 
         self.isVideo = QRadioButton(self.groupBox_2)
         self.isVideo.setObjectName(u"isVideo")
-        self.isVideo.setEnabled(False)
+        self.isVideo.setEnabled(True)
         sizePolicy3.setHeightForWidth(self.isVideo.sizePolicy().hasHeightForWidth())
         self.isVideo.setSizePolicy(sizePolicy3)
 

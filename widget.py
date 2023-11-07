@@ -36,7 +36,6 @@ class Widget(QWidget):
 
     model = YOLO("best.pt")
     path_save: str = None
-    is_proccess: bool = False
 
     # Конструктор класса окна приложения.
     def __init__(self, parent=None):
@@ -65,8 +64,10 @@ class Widget(QWidget):
             self.ui.listWidget.addItem(os.path.basename(obj))
             if file_extension in self.imageExtensions:
                 self.listImage.append(obj)
+                print(f'Add Image {obj}\n{self.listImage}')
             else:
                 self.listVideo.append(obj)
+                print(f'Add Video {obj}\n{self.listVideo}')
 
     # Удаление объектов.
     def deleteSelectedItem(self):
@@ -133,11 +134,11 @@ class Widget(QWidget):
             if self.ui.isImage.isChecked() & len(self.listImage) != 0:
                 self.model.predict(source=self.listImage, save=True,
                                    conf=self.ui.doubleSpinBox.value(), project=self.path_save)
-                self.is_proccess = True
             elif self.ui.isVideo.isChecked() & len(self.listVideo) != 0:
-                self.model.predict(source=self.listVideo, stream=True,
-                                   save=True, conf=self.ui.doubleSpinBox.value(), project=self.path_save)
-                self.is_proccess = True
+                result = self.model(source=self.listVideo[0], stream=True,
+                                    save=True, conf=self.ui.doubleSpinBox.value(), project=self.path_save)
+                for i in result:
+                    ...
             else:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Icon.Critical)
