@@ -176,6 +176,12 @@ color: rgb(255, 255, 255);</string>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(72, 72, 72);
+font: 350 12pt &quot;Segoe UI Variable Small Semilig&quot;;
+border-radius: 10px;
+color: rgb(255, 255, 255);</string>
+         </property>
          <property name="text">
           <string>Выберите путь созранения</string>
          </property>

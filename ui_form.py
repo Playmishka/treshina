@@ -135,6 +135,10 @@ class Ui_Widget(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.SelectPathButton.sizePolicy().hasHeightForWidth())
         self.SelectPathButton.setSizePolicy(sizePolicy4)
+        self.SelectPathButton.setStyleSheet(u"background-color: rgb(72, 72, 72);\n"
+"font: 350 12pt \"Segoe UI Variable Small Semilig\";\n"
+"border-radius: 10px;\n"
+"color: rgb(255, 255, 255);")
 
         self.verticalLayout_5.addWidget(self.SelectPathButton)
 
