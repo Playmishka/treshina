@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDoubleSpinBox, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QListWidget,
-    QListWidgetItem, QPushButton, QRadioButton, QSizePolicy,
-    QTabWidget, QVBoxLayout, QWidget)
+    QGroupBox, QHBoxLayout, QLabel, QLayout,
+    QListWidget, QListWidgetItem, QPushButton, QRadioButton,
+    QSizePolicy, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -125,16 +125,45 @@ class Ui_Widget(object):
 
         self.verticalLayout_3.addWidget(self.groupBox_2)
 
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setSizeConstraint(QLayout.SetMinimumSize)
+        self.SelectPathButton = QPushButton(Widget)
+        self.SelectPathButton.setObjectName(u"SelectPathButton")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.SelectPathButton.sizePolicy().hasHeightForWidth())
+        self.SelectPathButton.setSizePolicy(sizePolicy4)
+
+        self.verticalLayout_5.addWidget(self.SelectPathButton)
+
+        self.pathToSaveLabel = QLabel(Widget)
+        self.pathToSaveLabel.setObjectName(u"pathToSaveLabel")
+        sizePolicy.setHeightForWidth(self.pathToSaveLabel.sizePolicy().hasHeightForWidth())
+        self.pathToSaveLabel.setSizePolicy(sizePolicy)
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.pathToSaveLabel.setFont(font1)
+        self.pathToSaveLabel.setStyleSheet(u"")
+        self.pathToSaveLabel.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.pathToSaveLabel.setWordWrap(False)
+
+        self.verticalLayout_5.addWidget(self.pathToSaveLabel)
+
+
+        self.verticalLayout_3.addLayout(self.verticalLayout_5)
+
         self.Text = QLabel(Widget)
         self.Text.setObjectName(u"Text")
         sizePolicy1.setHeightForWidth(self.Text.sizePolicy().hasHeightForWidth())
         self.Text.setSizePolicy(sizePolicy1)
-        font1 = QFont()
-        font1.setFamilies([u"Segoe UI Variable Small Semibol"])
-        font1.setPointSize(10)
-        font1.setBold(True)
-        font1.setItalic(False)
-        self.Text.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI Variable Small Semibol"])
+        font2.setPointSize(10)
+        font2.setBold(True)
+        font2.setItalic(False)
+        self.Text.setFont(font2)
         self.Text.setLayoutDirection(Qt.LeftToRight)
         self.Text.setStyleSheet(u"\n"
 "color: rgb(255, 255, 255);\n"
@@ -147,9 +176,6 @@ class Ui_Widget(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.doubleSpinBox = QDoubleSpinBox(Widget)
         self.doubleSpinBox.setObjectName(u"doubleSpinBox")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.doubleSpinBox.sizePolicy().hasHeightForWidth())
         self.doubleSpinBox.setSizePolicy(sizePolicy4)
         self.doubleSpinBox.setStyleSheet(u"background-color: rgb(72, 72, 72);\n"
@@ -269,6 +295,8 @@ class Ui_Widget(object):
         self.groupBox_2.setTitle("")
         self.isImage.setText(QCoreApplication.translate("Widget", u"\u0424\u043e\u0442\u043e ", None))
         self.isVideo.setText(QCoreApplication.translate("Widget", u"\u0412\u0438\u0434\u0435\u043e", None))
+        self.SelectPathButton.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043f\u0443\u0442\u044c \u0441\u043e\u0437\u0440\u0430\u043d\u0435\u043d\u0438\u044f", None))
+        self.pathToSaveLabel.setText("")
         self.Text.setText(QCoreApplication.translate("Widget", u"\u041a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438:", None))
         self.ProcessingButton.setText(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c", None))
         self.HelpHelp.setText(QCoreApplication.translate("Widget", u"\u0421\u043f\u0440\u0430\u0432\u043a\u0430", None))

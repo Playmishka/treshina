@@ -1,1 +1,0 @@
-python3 -m nuitka --windows-disable-console --follow-imports --windows-icon-from-ico=icon.ico widget.py

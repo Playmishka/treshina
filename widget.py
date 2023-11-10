@@ -2,10 +2,8 @@
 import os.path
 import sys
 
-from PySide6 import QtWidgets
-
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import *
+from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget, QApplication
 from PySide6.QtCore import Qt, QSize
 from ultralytics import YOLO
 
@@ -34,7 +32,7 @@ class Widget(QWidget):
     imageExtensions: list = [".dmp", ".dng", ".jpeg", ".jpg",
                              ".mpo", ".png", ".tif", ".tiff", ".webp", ".pfm"]
 
-    model = YOLO("best.pt")
+    model = YOLO("models/best.pt")
     path_save: str = None
 
     # Конструктор класса окна приложения.
@@ -47,6 +45,7 @@ class Widget(QWidget):
         self.ui.HelpHelp.clicked.connect(showHelp)
         self.ui.listWidget.itemDoubleClicked.connect(self.ViewImage)
         self.ui.ProcessingButton.clicked.connect(self.process)
+        self.ui.SelectPathButton.clicked.connect(self.selectPath)
 
     # loader = QUiLoader()
     # ui_file = QFile("form.ui")
@@ -56,9 +55,9 @@ class Widget(QWidget):
 
     # Получение материалов для обработки.
     def getMaterialVP(self):
-        directory = QtWidgets.QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
-                                                           "*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);;"
-                                                           "PNG (*.png);; JPEG (*.jpeg);; JPG (*.jpg)")
+        directory = QFileDialog.getOpenFileNames(self, filter="AVI JPG JPEG MP4 PNG (*.avi *.jpg *.jpeg "
+                                                 "*.mp4 *.png) ;; AVI (*.avi) ;; MP4 (*.mp4);;"
+                                                 "PNG (*.png);; JPEG (*.jpeg);; JPG (*.jpg)")
         for obj in directory[0]:
             filename, file_extension = os.path.splitext(obj)
             self.ui.listWidget.addItem(os.path.basename(obj))
@@ -112,8 +111,8 @@ class Widget(QWidget):
                                    Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.FastTransformation)
             self.ui.ImageFile.setPixmap(pixmap)
 
-        if self.path_save:
-            for root, dirs, files in os.walk(self.path_save):
+        if self.ui.pathToSaveLabel.text():
+            for root, dirs, files in os.walk(self.ui.pathToSaveLabel.text()):
                 if select_item.text() in files:
                     path = os.path.join(root, select_item.text())
 
@@ -127,24 +126,36 @@ class Widget(QWidget):
                     self.ui.ImageAfterProc.setPixmap(pixmap)
 
     def process(self):
-        self.path_save = QFileDialog.getExistingDirectory(
-            None, "папка для сохранения")
-
-        if self.path_save:
-            if self.ui.isImage.isChecked() & len(self.listImage) != 0:
+        if self.ui.pathToSaveLabel.text():
+            if self.ui.isImage.isChecked() and len(self.listImage) != 0:
                 self.model.predict(source=self.listImage, save=True,
-                                   conf=self.ui.doubleSpinBox.value(), project=self.path_save)
-            elif self.ui.isVideo.isChecked() & len(self.listVideo) != 0:
+                                   conf=self.ui.doubleSpinBox.value(), project=self.ui.pathToSaveLabel.text())
+                self.WindowMessage(
+                    "Успех", "Фото успешно обработаны!", QMessageBox.Icon.Information)
+            elif self.ui.isVideo.isChecked() and len(self.listVideo) != 0:
                 result = self.model(source=self.listVideo[0], stream=True,
-                                    save=True, conf=self.ui.doubleSpinBox.value(), project=self.path_save)
-                for i in result:
+                                    save=True, conf=self.ui.doubleSpinBox.value(), project=self.ui.pathToSaveLabel.text())
+                for item in result:
                     ...
+                self.WindowMessage(
+                    "Успех", "Видео успешно обработано!", QMessageBox.Icon.Information)
             else:
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Icon.Critical)
-                msg.setText("Отсутствуют файлы для обработки")
-                msg.setWindowTitle("Ошибка")
-                msg.exec_()
+                self.WindowMessage(
+                    "Ошибка!", "Нет файлов для обработки.", QMessageBox.Icon.Critical)
+        else:
+            self.WindowMessage(
+                "Ошибка!", "Не указан путь для сохранения.", QMessageBox.Icon.Critical)
+
+    def selectPath(self):
+        self.ui.pathToSaveLabel.setText(QFileDialog.getExistingDirectory(
+            None, "папка для сохранения"))
+
+    def WindowMessage(self, title: str, text: str, icon: QMessageBox.Icon):
+        msg = QMessageBox()
+        msg.setWindowTitle(title)
+        msg.setText(text)
+        msg.setIcon(icon)
+        msg.exec_()
 
 
 # Точка выполнения программы.
